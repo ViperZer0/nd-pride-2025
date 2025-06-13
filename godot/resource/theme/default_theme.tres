@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://chje8e4c6yopf"]
+
+[resource]
+DialogueLabel/base_type = &"Label"
+DialogueSpeakerLabel/base_type = &"Label"
+DialogueSpeakerLabel/font_sizes/font_size = 24
