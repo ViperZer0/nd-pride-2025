@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://70t68sx6rwyp"
 
 [node name="MovementComponent" type="Node" parent="."]
 script = ExtResource("2_1ve2r")
-max_velocity = 200.0
+max_velocity = 400.0
 metadata/_custom_type_script = "uid://b7r1taemyxpxq"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

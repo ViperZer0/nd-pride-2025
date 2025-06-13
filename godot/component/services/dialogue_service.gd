@@ -11,6 +11,11 @@ var current_dialogue_index: int = 0
 @onready var message_label: Label = %MessageLabel
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("dialogue_next") and dialogue:
+		move_to_next_dialogue_item()
+		get_viewport().set_input_as_handled()
+
 ## Set up and display dialogue
 func display_dialogue(p_dialogue: Dialogue) -> void:
 	if p_dialogue.dialogue_items.is_empty():
@@ -20,7 +25,7 @@ func display_dialogue(p_dialogue: Dialogue) -> void:
 	dialogue = p_dialogue
 	current_dialogue_index = 0
 	_display_dialogue_item(dialogue.dialogue_items[0])
-	animation_player.play_animation("show_dialogue")
+	animation_player.play("show_dialogue")
 
 ## Move to and display the next dialogue item
 func move_to_next_dialogue_item() -> void:
@@ -35,7 +40,7 @@ func move_to_next_dialogue_item() -> void:
 
 ## Hide the dialogue box when we finish it.
 func _hide_dialogue() -> void:
-	animation_player.play_animation("hide_dialogue")
+	animation_player.play("hide_dialogue")
 
 ## Display the provided dialogue item as a textbox.
 func _display_dialogue_item(dialogue_item: DialogueItem) -> void:
@@ -48,6 +53,3 @@ func _display_dialogue_item(dialogue_item: DialogueItem) -> void:
 
 	speaker_label.text = dialogue_item.speaker_name
 	message_label.text = dialogue_item.message
-
-
-

@@ -4,7 +4,7 @@ class_name DialogueItem
 
 @export var speaker_icon: Texture2D
 @export var speaker_name: String
-@export var message: String
+@export_multiline var message: String
 
 func _init(p_speaker_icon = null, p_speaker_name = "", p_message = ""):
 	speaker_icon = p_speaker_icon

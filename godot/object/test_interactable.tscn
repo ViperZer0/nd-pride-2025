@@ -1,13 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://cslt3qwubu6d3"]
+[gd_scene load_steps=11 format=3 uid="uid://cslt3qwubu6d3"]
 
 [ext_resource type="Script" uid="uid://d3gysbwm8dc8u" path="res://component/interactable_component/interactable_component.gd" id="1_fp16n"]
 [ext_resource type="Script" uid="uid://byv7audcqcu6q" path="res://component/print_component/print_component.gd" id="2_wx0ot"]
+[ext_resource type="Script" uid="uid://b33twikbfejlp" path="res://component/dialogue_component/dialogue_component.gd" id="3_ddoqu"]
+[ext_resource type="Script" uid="uid://bcrc56f1esprw" path="res://src/dialogue_item.gd" id="4_s8d8i"]
+[ext_resource type="Script" uid="uid://by3laigmce54m" path="res://src/dialogue.gd" id="5_fy3p3"]
+[ext_resource type="Texture2D" uid="uid://m70s4huig863" path="res://resource/image/utah_teapot.png" id="5_s8d8i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_srdm1"]
 radius = 132.019
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ddoqu"]
-size = Vector2(128, 128)
+[sub_resource type="Resource" id="Resource_y3myc"]
+script = ExtResource("4_s8d8i")
+speaker_icon = ExtResource("5_s8d8i")
+speaker_name = "Test"
+message = "Test!!!"
+metadata/_custom_type_script = "uid://bcrc56f1esprw"
+
+[sub_resource type="Resource" id="Resource_ddoqu"]
+script = ExtResource("4_s8d8i")
+speaker_name = "You"
+message = "Ummm okay"
+metadata/_custom_type_script = "uid://bcrc56f1esprw"
+
+[sub_resource type="Resource" id="Resource_233vv"]
+script = ExtResource("5_fy3p3")
+dialogue_items = Array[ExtResource("4_s8d8i")]([SubResource("Resource_y3myc"), SubResource("Resource_ddoqu")])
+metadata/_custom_type_script = "uid://by3laigmce54m"
 
 [node name="TestInteractable" type="Node2D"]
 
@@ -16,16 +35,25 @@ script = ExtResource("1_fp16n")
 metadata/_custom_type_script = "uid://d3gysbwm8dc8u"
 
 [node name="Area2D" type="Area2D" parent="InteractableComponent2"]
+collision_layer = 5
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent2/Area2D"]
 shape = SubResource("CircleShape2D_srdm1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_ddoqu")
+scale = Vector2(0.189189, 0.189189)
+texture = ExtResource("5_s8d8i")
 
 [node name="PrintComponent" type="Node" parent="."]
 script = ExtResource("2_wx0ot")
 message = "Interacted with!"
 metadata/_custom_type_script = "uid://byv7audcqcu6q"
 
+[node name="DialogueComponent" type="Node" parent="."]
+script = ExtResource("3_ddoqu")
+dialogue = SubResource("Resource_233vv")
+metadata/_custom_type_script = "uid://b33twikbfejlp"
+
 [connection signal="interacted_with" from="InteractableComponent2" to="PrintComponent" method="print_message"]
+[connection signal="interacted_with" from="InteractableComponent2" to="DialogueComponent" method="show_dialogue"]

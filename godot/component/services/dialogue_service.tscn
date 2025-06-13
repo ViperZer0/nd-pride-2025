@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://hf0ufebgdemw"]
 
-[ext_resource type="Script" uid="uid://mtgf8kl85q48" path="res://component/services/dialogue_service.gd" id="1_0gb8y"]
+[ext_resource type="Script" uid="uid://mtgf8kl85q48" path="res://component/services/dialogue_service.gd" id="1_03yoc"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0gb8y"]
 
@@ -63,7 +63,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_0gb8y")
+script = ExtResource("1_03yoc")
 
 [node name="DialogueContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -97,6 +97,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_0gb8y")
+expand_mode = 5
 
 [node name="MarginContainer2" type="MarginContainer" parent="DialogueContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2

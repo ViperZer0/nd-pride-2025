@@ -49,3 +49,4 @@ func _get_configuration_warnings() -> PackedStringArray:
 		warnings.append("Expected at least one Area2D child")
 
 	return warnings
+
