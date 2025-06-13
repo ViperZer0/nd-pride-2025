@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cslt3qwubu6d3"]
+
+[ext_resource type="Script" uid="uid://d3gysbwm8dc8u" path="res://component/interactable_component/interactable_component.gd" id="1_fp16n"]
+[ext_resource type="Script" uid="uid://byv7audcqcu6q" path="res://component/print_component/print_component.gd" id="2_wx0ot"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_srdm1"]
+radius = 132.019
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ddoqu"]
+size = Vector2(128, 128)
+
+[node name="TestInteractable" type="Node2D"]
+
+[node name="InteractableComponent2" type="Node2D" parent="."]
+script = ExtResource("1_fp16n")
+metadata/_custom_type_script = "uid://d3gysbwm8dc8u"
+
+[node name="Area2D" type="Area2D" parent="InteractableComponent2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent2/Area2D"]
+shape = SubResource("CircleShape2D_srdm1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_ddoqu")
+
+[node name="PrintComponent" type="Node" parent="."]
+script = ExtResource("2_wx0ot")
+message = "Interacted with!"
+metadata/_custom_type_script = "uid://byv7audcqcu6q"
+
+[connection signal="interacted_with" from="InteractableComponent2" to="PrintComponent" method="print_message"]

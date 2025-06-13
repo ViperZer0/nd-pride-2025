@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb87oce6vp70y"]
+
+[ext_resource type="Script" uid="uid://byv7audcqcu6q" path="res://component/print_component/print_component.gd" id="1_ie06w"]
+
+[node name="PrintComponent" type="Node"]
+script = ExtResource("1_ie06w")
