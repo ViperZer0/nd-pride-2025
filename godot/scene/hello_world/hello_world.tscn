@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://2hb57vlg0pxp"]
+[gd_scene load_steps=6 format=3 uid="uid://2hb57vlg0pxp"]
 
 [ext_resource type="Script" uid="uid://c5c21whjq4mnd" path="res://scene/hello_world/hello_world.gd" id="1_egqhh"]
 [ext_resource type="PackedScene" uid="uid://dg61le07o7kvx" path="res://object/test_player.tscn" id="2_xigwt"]
 [ext_resource type="PackedScene" uid="uid://cslt3qwubu6d3" path="res://object/test_interactable.tscn" id="3_xvrcc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xigwt"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xvrcc"]
+normal = Vector2(-1, 0)
 
 [node name="HelloWorld" type="Node2D"]
 script = ExtResource("1_egqhh")
@@ -11,3 +17,17 @@ script = ExtResource("1_egqhh")
 position = Vector2(849, 306)
 
 [node name="TestPlayer" parent="." instance=ExtResource("2_xigwt")]
+position = Vector2(126, 156)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-2, 315)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(7, 0)
+shape = SubResource("WorldBoundaryShape2D_xigwt")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(1151, 319)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("WorldBoundaryShape2D_xvrcc")

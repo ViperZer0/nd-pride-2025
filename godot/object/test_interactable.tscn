@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://cslt3qwubu6d3"]
+[gd_scene load_steps=10 format=3 uid="uid://cslt3qwubu6d3"]
 
 [ext_resource type="Script" uid="uid://d3gysbwm8dc8u" path="res://component/interactable_component/interactable_component.gd" id="1_fp16n"]
-[ext_resource type="Script" uid="uid://byv7audcqcu6q" path="res://component/print_component/print_component.gd" id="2_wx0ot"]
 [ext_resource type="Script" uid="uid://b33twikbfejlp" path="res://component/dialogue_component/dialogue_component.gd" id="3_ddoqu"]
 [ext_resource type="Script" uid="uid://bcrc56f1esprw" path="res://src/dialogue_item.gd" id="4_s8d8i"]
 [ext_resource type="Script" uid="uid://by3laigmce54m" path="res://src/dialogue.gd" id="5_fy3p3"]
@@ -45,15 +44,9 @@ shape = SubResource("CircleShape2D_srdm1")
 scale = Vector2(0.189189, 0.189189)
 texture = ExtResource("5_s8d8i")
 
-[node name="PrintComponent" type="Node" parent="."]
-script = ExtResource("2_wx0ot")
-message = "Interacted with!"
-metadata/_custom_type_script = "uid://byv7audcqcu6q"
-
 [node name="DialogueComponent" type="Node" parent="."]
 script = ExtResource("3_ddoqu")
 dialogue = SubResource("Resource_233vv")
 metadata/_custom_type_script = "uid://b33twikbfejlp"
 
-[connection signal="interacted_with" from="InteractableComponent2" to="PrintComponent" method="print_message"]
 [connection signal="interacted_with" from="InteractableComponent2" to="DialogueComponent" method="show_dialogue"]

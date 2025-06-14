@@ -17,7 +17,12 @@ func _ready():
 
 func _process(delta: float) -> void:
 	# Move the object in the given direction
-	moved_object.position += current_direction * max_velocity * delta
+	var character_body := moved_object as CharacterBody2D
+	# Special check to see if this is a character body, since we can just set the velocity that way.
+	if character_body:
+		character_body.velocity = current_direction * max_velocity
+	else:
+		moved_object.position += current_direction * max_velocity * delta
 
 func move_in_direction(direction: Vector2) -> void:
 	current_direction = direction.normalized()

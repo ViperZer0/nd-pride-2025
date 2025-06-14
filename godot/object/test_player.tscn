@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dg61le07o7kvx"]
+[gd_scene load_steps=7 format=3 uid="uid://dg61le07o7kvx"]
 
+[ext_resource type="Script" uid="uid://c37fhkvbt5v3u" path="res://object/test_player.gd" id="1_1ve2r"]
 [ext_resource type="Script" uid="uid://70t68sx6rwyp" path="res://component/input_component/input_component.gd" id="1_ud3wm"]
 [ext_resource type="Script" uid="uid://b7r1taemyxpxq" path="res://component/movement_component/movement_component.gd" id="2_1ve2r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ud3wm"]
+size = Vector2(132, 130)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ud3wm"]
 size = Vector2(128, 128)
@@ -9,7 +13,12 @@ size = Vector2(128, 128)
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ve2r"]
 radius = 108.0
 
-[node name="TestPlayer" type="Node2D"]
+[node name="TestPlayer" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_1ve2r")
+
+[node name="PhysicsCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ud3wm")
 
 [node name="InputComponent" type="Node" parent="."]
 script = ExtResource("1_ud3wm")
