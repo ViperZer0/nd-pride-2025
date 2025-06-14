@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://06h405ngm6uh"]
+
+[ext_resource type="Script" uid="uid://bnjy1eoc6jjfs" path="res://component/hitbox_component/hitbox_component.gd" id="1_r6mu3"]
+
+[node name="HitboxComponent" type="Node2D"]
+script = ExtResource("1_r6mu3")
+monitoring = true
+monitorable = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[connection signal="child_entered_tree" from="." to="." method="_on_children_modified"]
+[connection signal="child_exiting_tree" from="." to="." method="_on_children_modified"]

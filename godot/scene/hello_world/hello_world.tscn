@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://2hb57vlg0pxp"]
+[gd_scene load_steps=7 format=3 uid="uid://2hb57vlg0pxp"]
 
 [ext_resource type="Script" uid="uid://c5c21whjq4mnd" path="res://scene/hello_world/hello_world.gd" id="1_egqhh"]
-[ext_resource type="PackedScene" uid="uid://dg61le07o7kvx" path="res://object/test_player.tscn" id="2_xigwt"]
+[ext_resource type="PackedScene" uid="uid://dg61le07o7kvx" path="res://component/player/player.tscn" id="2_xigwt"]
 [ext_resource type="PackedScene" uid="uid://cslt3qwubu6d3" path="res://object/test_interactable.tscn" id="3_xvrcc"]
+[ext_resource type="PackedScene" uid="uid://drpllo7dkflku" path="res://object/test_enemy.tscn" id="4_xvrcc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xigwt"]
 normal = Vector2(1, 0)
@@ -31,3 +32,6 @@ position = Vector2(1151, 319)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 shape = SubResource("WorldBoundaryShape2D_xvrcc")
+
+[node name="TestEnemy" parent="." instance=ExtResource("4_xvrcc")]
+position = Vector2(459, 484)

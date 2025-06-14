@@ -39,7 +39,8 @@ func _on_area_2d_exited(_area: Area2D) -> void:
 
 ## This signal runs when we modify the children of the component
 func _on_children_modified(_child: Node) -> void:
-	update_configuration_warnings()
+	if Engine.is_editor_hint():
+		update_configuration_warnings()
 
 ## Generates warning in the editor if there are no Area2D children
 func _get_configuration_warnings() -> PackedStringArray:
